@@ -1,7 +1,7 @@
 # flake8: noqa
+from .to_tuple import to_tuple
 from .flatten import flatten
-from .pad import pad
 from .blend import blend
 from .convolve import convolve
 from .warp_perspective import warp_perspective
-from .to_tuple import to_tuple
+from .pad import pad
