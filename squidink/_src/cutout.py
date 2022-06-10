@@ -27,10 +27,10 @@ def _cutout_mask(rng: chex.PRNGKey, x: chex.Array, mask_size: int | tuple[int, i
     N, H, W, C = x.shape
 
     mask = jnp.ones((H, W))
-    mask = pad(mask, [mask_size_half[0], mask_size_half[1]], mode="reflect")
+    mask = pad(mask, mask_size_half, mode="reflect")
 
     y_rng, x_rng = jr.split(rng)
-    start_indices = [jr.randint(y_rng, (), 0, H), jr.randint(x_rng, (), 0, W)]
+    start_indices = [jr.randint(y_rng, (), 0, H + 1), jr.randint(x_rng, (), 0, W + 1)]
     mask = jax.lax.dynamic_update_slice(
         mask,
         update=jnp.zeros(mask_size),
