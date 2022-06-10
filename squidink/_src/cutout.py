@@ -6,7 +6,7 @@ import jax.random as jr
 import einops
 import chex
 
-from .utils import flatten, pad
+from .utils import flatten, pad, to_tuple
 
 
 def _cutout_mask(rng: chex.PRNGKey, x: chex.Array, mask_size: int | tuple[int, int]) -> chex.Array:
@@ -20,8 +20,7 @@ def _cutout_mask(rng: chex.PRNGKey, x: chex.Array, mask_size: int | tuple[int, i
     Return:
         Binary mask for cutout.
     """
-    if isinstance(mask_size, int):
-        mask_size = (mask_size, mask_size)
+    mask_size = to_tuple(mask_size)
     mask_size_half = (mask_size[0] // 2, mask_size[1] // 2)
 
     x, unflatten = flatten(x)

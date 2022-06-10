@@ -5,7 +5,7 @@ import jax.numpy as jnp
 import jax.random as jr
 import chex
 
-from .utils import flatten, pad
+from .utils import flatten, pad, to_tuple
 from .flip import hflip, vflip
 
 
@@ -17,8 +17,7 @@ def random_crop(
     mode: str = "constant",
     **kwargs,
 ) -> chex.Array:
-    if isinstance(crop_size, int):
-        crop_size = (crop_size, crop_size)
+    crop_size = to_tuple(crop_size)
 
     x = pad(x, pad_size, mode, **kwargs)
     x, unflatten = flatten(x)
@@ -41,8 +40,7 @@ def center_crop(
     mode: str = "constant",
     **kwargs,
 ) -> chex.Array:
-    if isinstance(crop_size, int):
-        crop_size = (crop_size, crop_size)
+    crop_size = to_tuple(crop_size)
 
     x = pad(x, pad_size, mode, **kwargs)
     x, unflatten = flatten(x)
@@ -70,8 +68,7 @@ def five_crop(
     Args:
         new_axis (int): Axis index to stack the cropped patches.
     """
-    if isinstance(crop_size, int):
-        crop_size = (crop_size, crop_size)
+    crop_size = to_tuple(crop_size)
 
     x = pad(x, pad_size, mode, **kwargs)
     x, unflatten = flatten(x)
