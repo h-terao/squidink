@@ -9,3 +9,4 @@ from ._src.normalize import normalize, de_normalize
 from ._src.sharpness import sharpness
 from ._src.mixup import mixup
 from ._src.salt_pepper import salt, pepper
+from ._src.quantize import quantize
