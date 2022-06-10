@@ -26,8 +26,7 @@ def _cutout_mask(rng: chex.PRNGKey, x: chex.Array, mask_size: int | tuple[int, i
     x, unflatten = flatten(x)
     N, H, W, C = x.shape
 
-    mask = jnp.ones((H, W))
-    mask = pad(mask, mask_size_half, mode="reflect")
+    mask = jnp.ones((H + mask_size[0], W + mask_size[1]))
 
     y_rng, x_rng = jr.split(rng)
     start_indices = [jr.randint(y_rng, (), 0, H + 1), jr.randint(x_rng, (), 0, W + 1)]
