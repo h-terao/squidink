@@ -10,3 +10,4 @@ from ._src.sharpness import sharpness
 from ._src.mixup import mixup
 from ._src.salt_pepper import salt, pepper
 from ._src.quantize import quantize
+from ._src.resize import resize
