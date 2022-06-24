@@ -11,3 +11,4 @@ from ._src.mixup import mixup
 from ._src.salt_pepper import salt, pepper
 from ._src.quantize import quantize
 from ._src.resize import resize
+from ._src.vat_noise import vat_noise
