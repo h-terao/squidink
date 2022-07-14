@@ -69,7 +69,4 @@ for i, key in enumerate(figs):
     plt.axis("off")
 
 plt.tight_layout()
-plt.show()
-
-
-print(len(figs))
+plt.savefig("transformed.png")
