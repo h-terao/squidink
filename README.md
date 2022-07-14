@@ -5,10 +5,11 @@
 </p>
 
 <h1 align="center">SquidInk</h1>
-<h3 align="center">Efficient image/video augmentation library powered by JAX.</h3>
+<h3 align="center">Efficient image/video augmentation library powered by JAX</h3>
 
 ## Overview
 Squidink is an efficient image/video augmentation library powered by JAX.
+
 
 ### Examples
 
