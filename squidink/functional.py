@@ -1,15 +1,14 @@
 # flake8: noqa
-from ._src.blur import *
-from ._src.color import *
-from ._src.crop import *
-from ._src.flip import *
-from ._src.geometry import *
-from ._src.cutout import cutout
-from ._src.normalize import normalize, de_normalize
-from ._src.sharpness import sharpness
-from ._src.mixup import mixup
-from ._src.salt_pepper import salt, pepper
-from ._src.quantize import quantize
-from ._src.resize import resize
-from ._src.vat_noise import vat_noise
-from ._src.flow import warp_by_flow
+from .blur import *
+from .color import *
+from .crop import *
+from .flip import *
+from .geometry import *
+from .cutout import cutout
+from .normalize import normalize, de_normalize
+from .sharpness import sharpness
+from .mixup import mixup
+from .salt_pepper import salt, pepper
+from .quantize import quantize
+from .resize import resize
+from .flow import warp_by_flow

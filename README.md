@@ -4,18 +4,23 @@
     <br>
 </p>
 
-<div align="center">
+<h1 align="center">SquidInk</h1>
+<h3 align="center">Efficient image/video augmentation library powered by JAX.</h3>
 
-# SquidInk
-SquidInk is an image/video augmentation library powered by JAX <br>
-</div>
+## Overview
+Squidink is an efficient image/video augmentation library powered by JAX.
 
-<br><br>
+### Examples
 
-## Features
-- GPU/TPU accelerated jittable augmentations.
-- Apply random augmentations to batch efficiently by `jax.vmap`.
-- Differentiable.
+SquidInk supports various operations to transform images. Below figure shows the results of transformations implemented in SquidInk.
+
+<p align="center">
+    <br>
+    <img src="./figures/transformed.png"/>
+    <br>
+</p>
+If you want to try SquidInk with different images, modify examples/transform_and_show.py.
+
 
 ## Installation
 

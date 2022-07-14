@@ -15,11 +15,27 @@ def random_crop(
     crop_size: int | tuple[int, int],
     pad_size: int | tuple[int, int] = 0,
     mode: str = "constant",
-    **kwargs,
+    cval: chex.Scalar = 0,
+    reflect_type: str = "even",
 ) -> chex.Array:
-    crop_size = to_tuple(crop_size)
+    """Crop a patch from the random position.
 
-    x = pad(x, pad_size, mode, **kwargs)
+    Args:
+        rng: A RNG key.
+        x: Input data with dimensions (..., height, width, channel).
+        crop_size: Desired size of output data.
+        pad_size: If specified, padding input data.
+        mode: Padding mode.
+        cval: Constant value to pad. Only used when mode is constant.
+        reflect_type (str): Reflection type. "even" or "odd".
+            Only used when mode is reflect or summetric.
+
+    Returns:
+        Randomly cropped patch.
+
+    """
+    crop_size = to_tuple(crop_size)
+    x = pad(x, pad_size, mode, cval, reflect_type)
     x, unflatten = flatten(x)
     N, H, W, C = x.shape
 
@@ -38,11 +54,27 @@ def center_crop(
     crop_size: int | tuple[int, int],
     pad_size: int | tuple[int, int] = 0,
     mode: str = "constant",
-    **kwargs,
+    cval: chex.Scalar = 0,
+    reflect_type: str = "even",
 ) -> chex.Array:
+    """Crop a central patch.
+
+    Args:
+        x: Input data with dimensions (..., height, width, channel).
+        crop_size: Desired size of output data.
+        pad_size: If specified, padding input data.
+        mode: Padding mode.
+        cval: Constant value to pad. Only used when mode is constant.
+        reflect_type (str): Reflection type. "even" or "odd".
+            Only used when mode is reflect or summetric.
+
+    Returns:
+        Central patch.
+
+    """
     crop_size = to_tuple(crop_size)
 
-    x = pad(x, pad_size, mode, **kwargs)
+    x = pad(x, pad_size, mode, cval, reflect_type)
     x, unflatten = flatten(x)
     N, H, W, C = x.shape
 
@@ -61,7 +93,8 @@ def five_crop(
     pad_size: int | tuple[int, int] = 0,
     new_axis: int = 0,
     mode: str = "constant",
-    **kwargs,
+    cval: chex.Scalar = 0,
+    reflect_type: str = "even",
 ) -> chex.Array:
     """Crop five patches from the fiven image.
 
@@ -70,7 +103,7 @@ def five_crop(
     """
     crop_size = to_tuple(crop_size)
 
-    x = pad(x, pad_size, mode, **kwargs)
+    x = pad(x, pad_size, mode, cval, reflect_type)
     x, unflatten = flatten(x)
     N, H, W, C = x.shape
 
@@ -95,7 +128,8 @@ def ten_crop(
     new_axis: int = 0,
     vertical: bool = False,
     mode: str = "constant",
-    **kwargs,
+    cval: chex.Scalar = 0,
+    reflect_type: str = "even",
 ) -> chex.Array:
     """Crop five patches from the fiven image.
 
@@ -107,8 +141,8 @@ def ten_crop(
     flip_x = vflip(x) if vertical else hflip(x)
     return jnp.concatenate(
         [
-            five_crop(x, crop_size, pad_size, new_axis, mode, **kwargs),
-            five_crop(flip_x, crop_size, pad_size, new_axis, mode, **kwargs),
+            five_crop(x, crop_size, pad_size, new_axis, mode, cval, reflect_type),
+            five_crop(flip_x, crop_size, pad_size, new_axis, mode, cval, reflect_type),
         ],
         new_axis,
     )

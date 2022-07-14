@@ -20,7 +20,7 @@ __all__ = [
 def rotate(
     x: chex.Array,
     angle: float,
-    center: tuple[float, float] | None,
+    center: tuple[float, float] | None = None,
     order=0,
     mode="constant",
     cval=0,
