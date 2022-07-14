@@ -16,7 +16,7 @@ SquidInk supports various operations to transform images. Below figure shows the
 
 <p align="center">
     <br>
-    <img src="./figures/transformed.png"/>
+    <img src="./figures/demo.png"/>
     <br>
 </p>
 If you want to try SquidInk with different images, modify examples/transform_and_show.py.
