@@ -57,8 +57,8 @@ figs["cutout"] = T.cutout(rng, img, 112)
 
 
 # Draw.
-row = 7
-col = 4
+row = 4
+col = 7
 plt.figure(figsize=(10, 10))
 assert row * col >= len(figs)
 
