@@ -15,9 +15,7 @@ Squidink is an efficient image/video augmentation library powered by JAX.
 SquidInk supports various operations to transform images. Below figure shows the results of transformations implemented in SquidInk.
 
 <p align="center">
-    <br>
     <img src="./figures/demo.png"/>
-    <br>
 </p>
 If you want to try SquidInk with different images, modify examples/transform_and_show.py.
 
