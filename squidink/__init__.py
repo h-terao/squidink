@@ -1,6 +1,8 @@
 # flake8: noqa
 from . import functional
 
+__version__ = "0.0.3.alpha"
+
 # from .blur import *
 # from .color import *
 # from .crop import *
