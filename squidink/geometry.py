@@ -1,5 +1,7 @@
 from __future__ import annotations
+import functools
 
+import jax
 import jax.numpy as jnp
 import chex
 
@@ -47,7 +49,9 @@ def rotate(
 
 
 def rot90(x: chex.Array, n: int = 1) -> chex.Array:
-    x = jnp.rot90(x, n, axes=(-3, -2))  # [..., H, W, C]
+    assert n > 0, "n should be a positive integer."
+    branches = [functools.partial(jnp.rot90, k=k, axes=(-3, -2)) for k in range(4)]
+    x = jax.lax.switch(n % 4, branches, x)
     return x
 
 
